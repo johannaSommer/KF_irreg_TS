@@ -1,0 +1,9 @@
+numpy
+pandas
+scipy
+torch==1.8.1
+torchdiffeq
+matplotlib
+sklearn
+seml
+sacred

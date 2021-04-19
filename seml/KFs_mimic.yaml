@@ -1,0 +1,40 @@
+seml:
+  executable: KFs_mimic.py
+  name: kf_mimic
+  output_dir: /nfs/homedirs/sommer/slurm-output
+  project_root_dir: /nfs/homedirs/sommer/irreg_ts/KFrepo
+
+slurm:
+  experiments_per_job: 1
+  sbatch_options:
+    gres: gpu:1       # num GPUs
+    mem: 10G          # memory
+    cpus-per-task: 1  # num cores
+    time: 2-00:00     # max time, D-HH:MM
+    qos: students
+
+###### BEGIN PARAMETER CONFIGURATION ######
+
+fixed:
+  epochs: 40
+  device: cuda
+  dim: 38
+  batch_size: 64
+  cov_dim: 52
+  norm: gaussian
+  reg_lambda: 0.001
+  ldim: 40
+  hiddendim: 5
+  seed: 2
+  lr: 0.001
+  ds_seed: 0
+         
+
+grid:
+  model_name:
+    type: choice
+    options:
+        - KF
+        - NKF
+        - RKF-F
+        - RCKF    

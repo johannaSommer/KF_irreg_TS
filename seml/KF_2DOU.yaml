@@ -1,0 +1,37 @@
+seml:
+  executable: KF_2DOU.py
+  name: kf_2dou
+  output_dir: /nfs/homedirs/sommer/slurm-output
+  project_root_dir: /nfs/homedirs/sommer/irreg_ts/KFrepo/
+
+slurm:
+  experiments_per_job: 1
+  sbatch_options:
+    gres: gpu:1       # num GPUs
+    mem: 8G          # memory
+    cpus-per-task: 1  # num cores
+    time: 2-00:00     # max time, D-HH:MM
+    qos: students
+
+###### BEGIN PARAMETER CONFIGURATION ######
+
+fixed:
+  epochs: 15
+  device: cuda
+  dim: 2
+  batch_size: 64
+  hiddendim: 10
+  seed: 0
+  reg_lambda: 0.001
+  ldim: 5
+  lr: 0.001
+         
+            
+grid:
+  model_name:
+    type: choice
+    options:
+      - KF
+      - NKF
+      - RKF-F
+
